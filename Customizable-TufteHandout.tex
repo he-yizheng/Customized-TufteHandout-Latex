@@ -1,0 +1,440 @@
+\documentclass{tufte-handout} 
+% might keep showing warnings like marginbar being removed, 
+% or something like no citation command, which is fine as long as it can compile.
+
+
+%\geometry{showframe}
+%\geometry{showframe} % for debugging purposes -- displays the margins
+
+\usepackage{amsmath} % for better math display
+\usepackage{amsthm} % for better theorem display
+
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{graphics/}}
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+% Provides paragraphs of dummy text
+\usepackage{lipsum}
+
+% Defines colors
+% \usepackage{transparent} % uncomment if desired
+\usepackage{xcolor}
+\definecolor{blue}{cmyk}{0.63, 0.37, 0, 0.57}
+\definecolor{ltblue}{RGB}{78,150,179}
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+% Package for title style but I am not using it for now
+% \usepackage{sectsty} 
+
+% Sets section number style
+\setcounter{secnumdepth}{3} % maximum depth when forming section number, 
+
+% Configuring section number on the left to the section title
+\renewcommand\thesection{\color{white}\arabic{section}} 
+
+
+% Set title style, if desired, see read-me for further explanation
+\makeatletter
+  \renewcommand{\paragraph}{\@startsection{paragraph} % set the paragraph title
+    {4}{\z@}{-1ex \@plus -1ex \@minus -.3ex} 
+    {0.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}} % simply changes regarding fonts & color can be done here
+\makeatother
+
+\makeatletter
+  \renewcommand{\subsection}{\@startsection{subsection} % set the subsection title
+    {3}{-1.8em}{-3ex \@plus -1ex \@minus -.2ex} %
+    {1.5ex \@plus .2ex}
+    {\hspace*{-5.5em}\fcolorbox{ltblue}{ltblue}{\parbox[c][1.0ex][b]{4em}{\phantom{space}}}
+    \normalfont\large\itshape\color{ltblue}}} 
+\makeatother
+
+\makeatletter
+  \renewcommand{\section}{\@startsection{section} % set the section title
+    {3}{-1.01em}{-3ex \@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}
+    {\hspace*{-5.5em}\fcolorbox{blue}{blue}{\parbox[c][1.0ex][b]{4em}{\phantom{space}}}
+    \normalfont\Large\itshape\color{blue}}}
+\makeatother
+
+
+% Sets theorem style
+\usepackage{thmtools}
+\definecolor{theb}{rgb}{0.67, 0.80, 0.91}
+
+\declaretheorem[shaded={bgcolor=Lavender,
+    textwidth=30em}]{Definition} % Colorbox-styled Theorem 
+\declaretheorem[shaded={bgcolor=Lavender,
+    textwidth=30em}]{Theorem} % Colorbox-styled Theorem 
+\declaretheorem[shaded={rulecolor=Lavender,
+    rulewidth=2pt, bgcolor={rgb}{1,1,1}}]{Example-1} % Colorbounded-styled Theorem
+\declaretheorem[thmbox=L]{boxtheorem L} % Theorem box L-size
+\declaretheorem[thmbox=M]{Example} % Theorem box M-size
+\declaretheorem[thmbox=S]{Formula} % Theorem box S-size
+\declaretheorem[thmbox=S]{Statement} % Theorem box S-size
+
+% set up pdf outline bookmark depth
+\hypersetup{bookmarksdepth=3}
+
+% -----------------------------------------------------------------------
+
+\title{Customized Tufte Handout Template}
+\author[Matthew He]{Matthew He}
+  % if the \date{} command is left out, the current date will be used
+
+% Beginning of the document
+\begin{document}
+
+\maketitle % this prints the handout title, author, and date
+
+% abstract
+\begin{abstract}
+    \noindent 
+    This is a demo for a customized Tufte Handout stytle latex template, inspired by Anna Brandenberger, 
+    a former McGill undergraduate student.\\
+
+    \marginnote{Based on the original version, this template adds more customizable aesthetic components in, including
+    section/subsection/paragraph title, as well as Definition/Theorem/Lemma blocks. These aesthetic components are
+    heavily inspired by Anna Brandenberger.}
+\noindent 
+    Just like the original Tufte Handout template, it integrates the core feature of marginnote. Just like 
+    a comment section, marginnote is extremely handy
+    when you want to present the flow of a math proof or some connection between concepts, etc.  \\
+    \noindent It also preserve the ability for citation management, with the bibtex package.
+\end{abstract}
+
+% main text
+\section{Time-Homogeneous Markov Chains}
+\subsection{Regular Chains}
+
+    \begin{Definition}{Regularity} 
+        A transition matrix $P$ is \textit{regular} if and only if 
+        there exists $n \in \mathbb{N}$ such that every entry of $P^n$ is positive.
+    \end{Definition}
+
+    \begin{Theorem}
+        A stochastic matrix $P$ has an eigenvalue $\lambda^* = 1$. 
+        All other eigenvalues $\lambda$ of $P$ satisfy $|\lambda| \leq 1$, with strict inequality 
+        if $P$ is regular.
+    \end{Theorem} 
+
+    \textit{Proof.} Let $P$ be a $k \times k$ stochastic matrix. The rows of $P$ sum to 1 by definition, 
+    so $P \cdot \mathbf{1} = \mathbf{1}$ and $\lambda^* = 1$ is a right eigenvalue of $P$. 
+    Suppose that $\bar{z}$ is the eigenvector corresponding to any other eigenvalue $\lambda$ 
+    of $P$. Let $|z_m| = \max_{1 \leq i \leq k} |z_i|$ be the component of $\bar{z}$ of maximum 
+    absolute value. Then, 
+
+    \marginnote{
+        \textbf{Example of Regularity:} \\
+        The following matrix is regular,
+        \[
+        P = \begin{pmatrix}
+        0 & 1/2 & 1/2 \\
+        1 & 0 & 0 \\
+        1/2 & 1/2 & 0
+        \end{pmatrix}
+        \]
+        because $P^4$ is positive,
+        \[
+        P^4 = \begin{pmatrix}
+        9/16 & 5/16 & 1/8 \\
+        1/4 & 3/8 & 3/8 \\
+        1/2 & 5/16 & 3/16
+        \end{pmatrix}
+        \]    
+    \includegraphics*[width=\linewidth]{Figure}}
+    
+    \[
+    |\lambda| \cdot |z_m| = |\lambda z_m| = |(P \cdot \bar{z})_m| = \left| \sum_{i=1}^{k} P_{mi} z_i 
+    \right| \leq |z_m| \sum_{i=1}^{k} P_{mi} = |z_m|
+    \]
+    and consequently $|\lambda| \leq 1$.
+
+    Assume that $P$ is regular. Then $P^n > 0$ for some $n > 0$. $P$ is a stochastic matrix, 
+    and it was shown above that $P$ has an eigenvalue $\lambda^* = 1$. Moreover, all other 
+    eigenvalues $\lambda$ of $P$ satisfy $|\lambda| \leq 1$. We want to show that the 
+    inequality is strict. If $\lambda$ is an eigenvalue of $P$, then $\lambda^n$ is an 
+    eigenvalue of $P^n$. Let $\bar{x}$ be its corresponding eigenvalue, with $|x_m| = 
+    \max_{1 \leq i \leq k} |x_i|$. Then,
+
+
+    \[
+    |\lambda|^n \cdot |x_m| = |(P^n \cdot \bar{x})_m| = \left| \sum_{i=1}^{k} P^n_{mi} x_i \right| 
+    \leq |x_m| \sum_{i=1}^{k} P^n_{mi} = |x_m|
+    \]
+
+    Since the entries of $P^n$ are positive, the last inequality only holds if $|x_1| = \dots = |x_k|$. 
+    Similarly, the first inequality only holds if $x_1 = \dots = x_m$. 
+    But the constant vector whose components are the same is an eigenvector associated with the eigenvalue 1. 
+    Hence, if $\lambda \neq 1$, one of the inequalities must be strict. Thus, $|\lambda| < 1$.
+
+\section{Experiments with random outcomes}
+
+    \subsection{Ingredients of a Probability Model}
+        \marginnote{    \vspace*{20ex}
+
+            \textbf{Kolmogorov Axioms (early 1930s)}
+
+        \begin{enumerate}
+            \item $0 \leq P(A) \leq 1 $ for event A.
+            \item $P(\Omega) = 1$ and $ P(\emptyset) =0$.
+            \item If $ A_1, A_2 ......$ is a sequence of pairwise disjoint events \\
+            ($E_i \cap E_j = \emptyset $) for $ i \neq j$, \\
+            then \\ $ P(E_1 \cup E_2 \cup E_3 ......) = \sum_{i=1}^{\infty} P(E_i)$ \\
+            or \[P(\bigcup_{i=1}^{\infty})=\sum_{i=1}^{\infty}P(A_{i})\]
+        \end{enumerate}
+        *Axiom 3 can also be stated in terms of finite union of events as\\
+        $ P(E_1 \cup E_2 \cup E_3 ......) = \sum_{i=1}^{n}P(E_i)$\\
+        *Axiom 3 states that we can calculate probability of an event by summing up probabilities of its
+        disjoint decomposed events.}
+
+
+        \begin{Definition}
+            These are ingredients of a probability model. \\
+            \begin{itemize}
+                \item The \textbf{sample space} $\Omega$ is the set of all possible outcomes of
+                the experiment. Elements of $ \Omega $ are called \textbf{sample points} 
+                and typically denoted by $ \omega $.
+                \item Subsets of $ \Omega $ are called \textbf{events}. 
+                The collection of events in $ \Omega $ is denoted by $ \mathcal{F} $.
+                \item The \textbf{probability measure} 
+                (also called \textbf{probability distribution} or simply \textbf{probability})
+                P is a function from $ \mathcal{F} $ into the real numbers. 
+                Each event A has a probability of \textit{P(A)}, and
+                P satisfies the axioms on the right. 
+            \end{itemize}
+            The triple $ (\Omega, \mathcal{F}, \mathit{P}) $ is called a \textbf{probablity space}. 
+            Every mathematically precise model of a random experiment or collection of experiments must be 
+            of this kind.
+
+        \end{Definition}
+
+
+    \subsection{Random Sampling}
+        \begin{Theorem}[Random Sampling]
+            Let S be a finite sample space with N equally likely events and let E be an 
+            event in S. Then \newline 
+            \begin{center}
+                $P(E) = \frac{n}{N}$
+            \end{center}
+        \end{Theorem} 
+
+        \marginnote{This important theorem can reduce the problem of finding probabilities 
+        to a counting problem.}
+
+        \paragraph{Counting Rule 1: Multiplication Rule}
+            \textbf{Sampling with replacement, order matters.}
+            Consider k sets, Set 1 and Set 2 ... Set k. Set 1 has $n_{1}$, Set 2 has $n_{2}$ ... Set k has $n_{k}$
+            distinct objects. Then the number of ways to form a set by choosing one object from each set is $n_{1}n_{2}...n_{k}$.
+
+        \paragraph{Counting Rule 2: Factorial Rule}
+            \textbf{Sampling without replacement, order matters.}
+            The number of ways to arrange \textit{n} distinct objects is $n!$. \\
+            $0! = 1 $and $1! = 1$
+
+        \paragraph{Counting Rule 3: Permutation Rule }
+            \textbf{Sampling without replacement, order matters.}
+            The number of ways to arrange \textit{r} chosen from \textit{n} distinct object at a time without 
+            replacement, where the order matters, is known as \textbf{permutations} of \textit{n} objects taken \textit{r} at a time.\\
+            It is given by: $^{n}P_{r}=\dfrac{n!}{(n-r)!}$
+
+        \paragraph{Counting Rule 4: Combination Rule}
+            \textbf{Sampling without replacement, order irrelevant.}
+            The number of ways to select \textit{r} object from \textit{n} distinct total objects at a time without replacement,
+            where order does not matter, is known as \textbf{combination} of \textit{n} objects taken \textit{r} at a time.
+            It is given by: $\binom{n}{r} = \dfrac{n!}{(n-r)!r!}$
+            \marginnote{$\binom{n}{r}$ is also called binomial coefficient.}
+            
+    \subsection{Consequences of the rules of probability}
+        \paragraph{Decomposing an event}
+        If $ A_{1}, A_{2},..... $ are pairwise disjoint events and A is their union, then \\
+        $ P(A) = P(A_{1}) + P(A_{2}) + .... $. Calculation of the probability of a complicated event A 
+        almost always involves decomposing A into smaller disjoint pieces whose probabilities are easier to find.
+        Both finite and infinite decomposition is possible.
+        \begin{Theorem}[Events and complements]\phantom{xx} \\
+            For \it any event A \rm ,$ P(A)^c = 1 - P(A)$
+        \end{Theorem}
+
+        \begin{Theorem}
+            $P(\emptyset) =0$
+        \end{Theorem}
+
+        \begin{Theorem} 
+            $P(A\cup B^C) = P(A) - P(A \cap B^c)$
+        \end{Theorem}
+
+        \marginnote{\bf Proof: \rm \newline
+            Express A as the union of disjoint events as
+            $A = (A \cap B^C) \cup (A \cap B)$ \newline
+            $P(A) = P(A \cap B^C) + P(A \cap B)$ \newline by Axiom 3, \newline
+            $\Rightarrow P(A\cup B^C) = P(A) - P(A \cap B^c)$}
+
+        \begin{Theorem}[Monotonicity of probability]
+            If $A \subset B$ then $P(A) \leq P(B)$
+        \end{Theorem}
+
+        \noindent  \bf Proof: \rm \newline
+        $B = A \cup (A^C \cap B)$, $P(B)=P(A) + P(A^C \cap B)$ -- Axiom 3 \newline
+        As $P(A^C \cap B) \geq 0$ -- Axiom 1, $\Rightarrow P(B) \geq P(A) or P(A) \leq P(B)$
+
+        \begin{Theorem}[Inclusion-exclusion formulas]
+            \[P(A\cup B) = P(A) + P(B) - P(A \cap B)\]
+            \begin{align*}
+            P(A\cup B\cup C ) = P(A) + P(B)+P(C) - P(A\cap B) - P(A \cap C) \\
+            - P(B \cap C) + P(A\cap B \cap C)
+            \end{align*}
+            General Formula:
+            \begin{flalign*}
+                \begin{split}
+                P(A_{1}\cup ... \cup A_{n}) = \sum_{i=1}^{n }P(A_{i }) - \sum_{1 \leq i_{1} < i_{2}\leq n }P(A_{i_{1}}\cap A_{i_{2}})\\
+                +\sum_{1 \leq i_{1} < i_{2} < i_{3} \leq n }P(A_{i_{1}}\cap A_{i_{2}}\cap A_{i_{3}})\\
+                -\sum_{1 \leq i_{1} < i_{2} < i_{3} \leq i_{4} \leq n }P(A_{i_{1}}\cap A_{i_{2}}\cap A_{i_{3}} \cap A_{i_{4}})\\
+                + ... 
+                +(-1)^{n+1}P(A_{i_{1}}\cap ... \cap A_{i_{n}}) \\
+                = \sum_{k=1}^{n }(-1)^{k+1} \sum_{1\leq i_{1} < ... < i_{k } \leq n } P(A_{i_{1}}\cap ...\cap A_{i_{k}})
+            \end{split} 
+            \end{flalign*}
+            
+        \end{Theorem}
+
+        \noindent \textbf{Proof:} \newline
+            $A \cup B = (A \cap B^C) \cup (A \cap B) \cup (A^C \cap B)$ \newline
+            $P(A \cup B) = P(A \cap B^C) + P(A \cap B) + P(A^C \cap B)$ \newline
+            $P(A \cup B) = (P(A) - P(A \cap B)) + P(A \cap B) + (P(B) - P(A \cap B))$ \newline
+            By Theorem 3, therefore $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+
+
+        
+
+    
+        \noindent \textbf{Proof} : \newline
+            Write E as the union of its simple events (elementary outcomes). \\
+            $E = \cup ^{n} _{i = 1} E_{i}$ \\
+            As the simple events are disjoint,\\
+            \noindent  $P(E) = \sum_{n}^{i=1} P(E_{i})$ by Axiom 3.\\
+            \noindent Similarly, $S = \cup^{N} _{i=1} E_{i}$ and $P(S) = \sum_{N}^{i=1} P(E_{i})$ by Axiom 3. \\
+            Since all event $E_{i}$ are equally likely (have the same probability of occurrence) \\
+            $\sum_{i=1}^{N}P(E_{i}) = NP(E_{i})$ also $P(S) =1$ by Axiom 2 \\
+            Hence, $NP(E_{i}) = 1$ and $P(E_{i}) = \frac{1}{N} $\\
+            Therefore, $P(E) = \sum_{i=1}^{n}P(E_{i}) = \sum_{i=1}^{n} \frac{1}{N} = \frac{n}{N}$ 
+
+
+    \marginnote{\textit{\textbf{Side notes ssss}}}
+
+\section{Conditional probability and independence}
+    \subsection{Condition probability}
+        \marginnote{\textbf{Fact:}\\
+        Let B be an event in the sample space $ \Omega $ such that $ P(B) > 0 $. 
+        Then, as a function of the event A, the conditional probability $ P(A|B) $ satisfies the Kolmogorov Axioms.
+        Especially, we have \\
+        $ P(\cup_{i=1}^{\infty}B_{i }|A) = \sum_{i=1}^{\infty}P(B_{i }|A)$ \\
+        where, $ B_{i } \cap B_{j } = \emptyset $ for $ i \neq j $}
+        
+        \begin{Definition}[Conditional probability] \phantom{text} \\
+            Let B be an event in the sample space $ \Omega $ such that $ P(B) > 0 $. Then for all 
+            events A the \textbf{conditional probability} of A given B is defined as 
+            \[P(A|B )=\frac{P(AB )}{P(B )}\]
+        \end{Definition}\
+        
+        \begin{Theorem}
+            Suppose that we have an experiment with \textbf{finitely many equally likely outcomes} and B is not the empty set.
+            Then, for any event A 
+            \[P(A|B ) = \frac{\#AB }{\#B}\]
+        \end{Theorem}
+
+        \marginnote{Or simply, we have \[P(A\cap B) = P(B|A)P(A) = P(A|B)P(B)\] \\
+        \textbf{Hints:}
+            \begin{enumerate}
+                \item If required to find $ P(A\cap B) $, look for either $ P(A ) $ or $ P(B ) $ and one 
+                of the conditional probabilities.
+                \item In word problems "of those that" implies a conditional probability.
+                \item Do not confuse "and" with "given that"
+            \end{enumerate}}
+        
+
+        \begin{Theorem}[Multiplication rule for n events]
+            If $ A_{1}, ... , A_{n } $ are events and all the conditional probabilities below make sense then we 
+            have
+            \[P(A_{1}\cdot \cdot \cdot A_{n })=P(A_{1})P(A_{2}|A_{1})P(A_{3}|A_{2}A_{1})\cdot \cdot \cdot P(A_{n }|A_{1}\cdot \cdot \cdot A_{n-1}) \]\\
+        \end{Theorem}
+        
+        \textbf{Nots:} This implies that problems involving the intersection of several events can be 
+        simplified to a great extent by conditioning backwards.
+
+        \paragraph{Three special cases of connditional probability}
+        \begin{enumerate}
+            \item Let A and B be two disjoint events, then, $ A \cap B = \emptyset $ and \\
+                    $ P(B|A)=0 $, since $ P(A\cap B ) = 0 $ 
+            \item Let A and B be two events, such that $ B \subset A  $. Then, \\
+            $ P(B|A ) = \frac{P(A \cap B )}{P(A)} = \frac{P(B )}{P(A )} $ 
+            \item Let A and B be two events, such that $ A \subset B  $. Then, \\
+            $ P(B|A ) = \frac{P(A \cap B )}{P(A)} = \frac{P(A )}{P(A )} = 1 $ 
+            
+        \end{enumerate}
+
+        \paragraph{Calculating probability by decomposition}
+        For example, a general version of the reasoning can be: 
+        \begin{flalign}
+            P(A) = P(AB) + P(AB^{c })= P(A|B)P(B) +P(A|B^{c })P(B^{c }).
+        \end{flalign}
+        The idea is the decomposition of a complicated event A into disjoint pieces that are 
+        easier to deal with. Above we used the pair $ \left\{ B, B^{c } \right\} $ to split A into two pieces. 
+        $ \left\{ B, B^{c } \right\} $ is an example of a \textit{partition}.
+        
+        \begin{Definition}[Partition]
+            A finite collection of event $ \left\{ B_{1}, \dots, B_{n } \right\} $ is a \textbf{partition}
+            of $ \Omega $ if the sets $ B_{i } $ are pairwise disjoint and together they make up $ \Omega $. That is
+            , $ B_{i }B_{ j} = \emptyset $ whenever $ i \neq  j$ and $ \cup_{i=1}^{n }B_{i }= \Omega $
+        \end{Definition}
+        
+        \marginnote{This equation is true for the same reason as the eq. (1). \\
+        Namely, set algebra gives 
+        \[A = A \cap \Omega = A \cap \left( \bigcup_{i=1}^{n }B_{i } \right) = \bigcup_{i=1}^{n} A B_{i }\]}
+        
+
+        \begin{Theorem}[The Law of Total Probability]
+            Suppose that $ B_{1}, \dots , B_{n } $ is a partition of $ \Omega $ with $ P(B_{i }) >0$
+            for $ i = 1, \dots, n $. Then for any event A we have 
+            \[P(A) = \sum_{i=1}^{n }P(AB_{i }) = \sum_{i=1}^{n }P(A|B_{i })P(B_{i })\]
+        \end{Theorem}
+
+
+%  end of main text ----------------------------------------------------------------------------------
+
+\makeatletter
+  \renewcommand{\section}{\@startsection{section} % change the title for reference section
+    {3}{0.8em}{-3ex \@plus -1ex \@minus -.2ex}%
+    {1.5ex \@plus .2ex}
+    {\hspace*{-5.5em}\fcolorbox{Periwinkle}{Periwinkle}{\parbox[c][1.0ex][b]{4em}{\phantom{space}}}
+    \normalfont\Large\itshape\color{blue}}}
+\makeatother
+
+\bibliography{marginnotes}
+\bibliographystyle{plainnat}
+
+\end{document}
