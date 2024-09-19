@@ -1,11 +1,11 @@
 Hello! 
 Wellcome to this customizable Tufte-Handout template! 
 
-### Acknowledgement
+## Acknowledgement
 This template is heavily influenced by McGill folks, including student, professor and alumni, due to the fact that this style is kind of popular at McGill. Especially, this template is my personal replication and customization of Anna Brandenberger's notes template. 
 >https://github.com/abrandenberger/course-notes
 
-### Quick Start
+## Quick Start
 Basically all the basic function are commented in the .tex file. 
 And all the common usage of the package can be found in the main text, including theorem/definition block, margin-note, inserting figures and so on.
 
@@ -13,11 +13,12 @@ And all the common usage of the package can be found in the main text, including
 1. Go set your own snippets! I put parts of my snippets json file in the repo too. (I used vscode latex workshop)
 2. VS code is still really good for writing latex, you can try.
 
-### Latex Class Related Issues
+## Latex Class Related Issues
 Be aware that some warning like "Latex: Marginpar Missing in Page ~" is fine, as long as you can see the desired pdf file after compiling.
 
 It's still recommended to check out the documents in the original Tufte-Latex repository, since the Latex class we're using here is exactly the same as that one. Any instruction with class related issues should be directed to those documents.
-### Further Customization
+
+## Further Customization
 There are several parts in this template can be further customized. 
 #### Section title style
 You can select font and colors for title itself and its numeration, and decide wether you want to display title or numeration for a certain section type in latex, as you wish.
@@ -52,7 +53,7 @@ But I will briefly explain what it's important here, adding comments in forms of
 #### Theorem Blocks
 You can also customized the theorem blocks to meet your preference. I used thmtools package here, but you can also use amsthm, shouldn'd cause any problem.
 
-### Debugging
+## Debugging
 
 ### Overall
 Latex is a bit old and it's normal to have some strange problem/warning. Debugging by trying is useful.
@@ -62,10 +63,11 @@ Latex is a bit old and it's normal to have some strange problem/warning. Debuggi
 The position of the title might go wrong in some cases. In some cases, you can fix it by changing the horizontal shift parameter, and the \\hspace*{} to move things around. In other cases, if the first title looks strange, change the length of the abstract a bit.
 
 
-### Contributing
+## Contributing
 
 Patches and pull requests are most welcome via the issue tracker!  
-### License
+
+## License
 
 Copyright 2007–2015 by Kevin Godby, Bil Kleb, and Bill Wood.
 
