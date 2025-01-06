@@ -1,13 +1,24 @@
-\documentclass{tufte-handout} 
-% might keep showing warnings like marginbar being removed, 
-% or something like no citation command, which is fine as long as it can compile.
-
+\documentclass{tufte-handout}
 
 %\geometry{showframe}
-%\geometry{showframe} % for debugging purposes -- displays the margins
+%\geometry{showframe}% for debugging purposes -- displays the margins
 
-\usepackage{amsmath} % for better math display
-\usepackage{amsthm} % for better theorem display
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cleveref}
+\crefname{Proposition}{Proposition}{Propositions}
+\Crefname{Proposition}{Proposition}{Propositions}
+\crefname{Theorem}{Theorem}{Theorems}
+\Crefname{Theorem}{Theorem}{Theorems}
+\crefname{Definition}{Definition}{Definitions}
+\Crefname{Definition}{Definition}{Definitions}
+\crefname{Corollary}{Corollary}{Corollaries}
+\Crefname{Corollary}{Corollary}{Corollaries}
+\crefname{Lemma}{Lemma}{Lemmas}
+\Crefname{Lemma}{Lemma}{Lemmas}
+\crefname{Example}{Example}{Examples}
+\Crefname{Example}{Example}{Examples}
+\usepackage{amsthm}
 
 % Set up the images/graphics package
 \usepackage{graphicx}
@@ -33,9 +44,8 @@
 \usepackage{lipsum}
 
 % Defines colors
-% \usepackage{transparent} % uncomment if desired
 \usepackage{xcolor}
-\definecolor{blue}{cmyk}{0.63, 0.37, 0, 0.57}
+\definecolor{blue}{cmyk}{0.63, 0.37, 0, 0.57}     
 \definecolor{ltblue}{RGB}{78,150,179}
 
 % These commands are used to pretty-print LaTeX commands
@@ -48,48 +58,52 @@
 \newcommand{\doccls}[1]{\texttt{#1}}% document class name
 \newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
 
-% Package for title style but I am not using it for now
-% \usepackage{sectsty} 
+% Package for title style
+\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
 
 % Sets section number style
-\setcounter{secnumdepth}{3} % maximum depth when forming section number, 
+\setcounter{secnumdepth}{3} % uncomment this, if desired
+\renewcommand\thesection{\color{white}\arabic{section}}
 
-% Configuring section number on the left to the section title
-\renewcommand\thesection{\color{white}\arabic{section}} 
-
-
-% Set title style, if desired, see read-me for further explanation
+% Sets title style
 \makeatletter
-  \renewcommand{\paragraph}{\@startsection{paragraph} % set the paragraph title
-    {4}{\z@}{-1ex \@plus -1ex \@minus -.3ex} 
-    {0.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}} % simply changes regarding fonts & color can be done here
+  \renewcommand{\paragraph}{\@startsection{paragraph}%
+    {4}{\z@}{-1ex \@plus -1ex \@minus -.3ex}%
+    {0.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}}
 \makeatother
 
 \makeatletter
-  \renewcommand{\subsection}{\@startsection{subsection} % set the subsection title
-    {3}{-1.8em}{-3ex \@plus -1ex \@minus -.2ex} %
+  \renewcommand{\subsection}{\@startsection{subsection}%
+    {3}{-1.8em}{-3ex \@plus -1ex \@minus -.2ex}%
     {1.5ex \@plus .2ex}
     {\hspace*{-5.5em}\fcolorbox{ltblue}{ltblue}{\parbox[c][1.0ex][b]{4em}{\phantom{space}}}
-    \normalfont\large\itshape\color{ltblue}}} 
+    \normalfont\large\itshape\color{ltblue}}}
 \makeatother
 
 \makeatletter
-  \renewcommand{\section}{\@startsection{section} % set the section title
+  \renewcommand{\section}{\@startsection{section}%
     {3}{-1.01em}{-3ex \@plus -1ex \@minus -.2ex}%
     {1.5ex \@plus .2ex}
     {\hspace*{-5.5em}\fcolorbox{blue}{blue}{\parbox[c][1.0ex][b]{4em}{\phantom{space}}}
     \normalfont\Large\itshape\color{blue}}}
 \makeatother
 
-
 % Sets theorem style
 \usepackage{thmtools}
+\usepackage{transparent}
 \definecolor{theb}{rgb}{0.67, 0.80, 0.91}
 
 \declaretheorem[shaded={bgcolor=Lavender,
     textwidth=30em}]{Definition} % Colorbox-styled Theorem 
 \declaretheorem[shaded={bgcolor=Lavender,
     textwidth=30em}]{Theorem} % Colorbox-styled Theorem 
+\declaretheorem[shaded={bgcolor=Thistle,
+    textwidth=30em}]{Corollary} % Colorbox-styled Theorem
+\declaretheorem[shaded={bgcolor=PeachPuff,
+    textwidth=30em}]{Proposition} % Colorbox-styled Proposition
+\declaretheorem[shaded={bgcolor=Thistle,
+    textwidth=30em}]{Lemma} % Colorbox-styled Lemma
 \declaretheorem[shaded={rulecolor=Lavender,
     rulewidth=2pt, bgcolor={rgb}{1,1,1}}]{Example-1} % Colorbounded-styled Theorem
 \declaretheorem[thmbox=L]{boxtheorem L} % Theorem box L-size
@@ -97,7 +111,7 @@
 \declaretheorem[thmbox=S]{Formula} % Theorem box S-size
 \declaretheorem[thmbox=S]{Statement} % Theorem box S-size
 
-% set up pdf outline bookmark depth
+% set up pdf bookmark depth
 \hypersetup{bookmarksdepth=3}
 
 % -----------------------------------------------------------------------
